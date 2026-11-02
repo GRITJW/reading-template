@@ -1,0 +1,9 @@
+{
+  "template_id": "knowledge-reader-v5",
+  "version": "1.0.0",
+  "sha256": {
+    "shell.html": "0dc75c6010d15ec9a0b2d84f399549ce77ad2a33af6e133a08344e8c61b47ec4",
+    "reader.css": "db87d948b6ab4a3ec0c846fdc0956e1cc33081456a6e1714c40c24c98fda5468",
+    "reader.js": "9eb898356df66adb659d81c0cee3fc55061e2fa03a1b96fbe22f0e284b10903e"
+  }
+}

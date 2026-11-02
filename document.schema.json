@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "知识文档固定模板 v5 的文章配置",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "template_id", "source", "output", "metadata"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"const": 1},
+    "template_id": {"const": "knowledge-reader-v5"},
+    "source": {"type": "string", "minLength": 1, "description": "相对于本配置的 Markdown 路径，如 文章.md"},
+    "output": {"type": "string", "minLength": 1, "description": "相对于本配置的 HTML 路径，如 文章.html"},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "author", "publication_date"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1, "description": "必须与 Markdown 中唯一的一级标题一致"},
+        "author": {"type": "string", "minLength": 1, "default": "石头开会"},
+        "publication_date": {
+          "description": "真实发表日期；尚未确定时填写 null，不自动使用导出日期",
+          "anyOf": [{"type": "null"}, {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "format": "date"}]
+        }
+      }
+    },
+    "reading": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {"margin_percent": {"type": "integer", "minimum": 0, "maximum": 40, "default": 10}}
+    }
+  }
+}

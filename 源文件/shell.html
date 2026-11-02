@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="color-scheme" content="light dark">
+<title>{{TITLE}}</title>
+<script>try{const p=JSON.parse(localStorage.getItem('knowledge-reader-v2')||'null');if(p&&['white','paper','green','dark'].includes(p.theme))document.documentElement.dataset.theme=p.theme;}catch(e){}</script>
+<style>{{CSS}}</style>
+</head>
+<body data-margin="{{MARGIN}}" style="--side-space:{{MARGIN}}%">
+<a class="skip-link" href="#article">跳到正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="toolbar"><div class="toolbar-inner">
+<div class="toolbar-start"><button class="toc-toggle tool-button" id="toc-toggle" type="button" aria-label="收起左侧目录" aria-expanded="true" aria-controls="desktop-toc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 9h4M13 13h4"/></svg></button><a class="toolbar-title" id="toolbar-title" href="#top" title="{{TITLE}}" aria-label="返回开篇：{{TITLE}}" hidden>{{TITLE}}</a></div>
+<div class="toolbar-controls">
+<button class="tool-button settings-trigger" id="settings-open" type="button" aria-haspopup="dialog" aria-controls="reader-settings" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg><span>阅读设置</span></button>
+</div></div></header>
+<div class="page-grid" id="top">
+<main class="reading-column" id="article" tabindex="-1">
+<header class="article-header"><h1>{{TITLE}}</h1><div class="doc-meta"><span>作者：{{AUTHOR}}</span><span>发表日期：{{DATE}}</span><span id="word-count">字数：{{WORD_COUNT}} 字</span></div></header>
+<details class="mobile-toc"><summary>本文目录</summary><nav aria-label="手机阅读目录">{{TOC}}</nav></details>
+<article class="article-body" id="article-body">{{CONTENT}}</article>
+<footer class="article-footer"><a href="#top">回到开篇 ↑</a></footer>
+</main>
+<aside class="toc-rail" id="desktop-toc" aria-label="阅读导航"><div class="toc-title"><span>本文目录</span><span class="toc-count">{{SECTION_COUNT}} 节</span></div><button class="toc-expand" type="button" aria-expanded="false">展开全部小节</button><nav class="toc-nav" aria-label="桌面阅读目录">{{TOC}}</nav><div class="toc-rail-footer"><div class="back-top"><span id="progress-text">阅读进度 0%</span><a href="#top">回到顶部 ↑</a></div></div></aside>
+</div>
+<dialog class="settings-dialog" id="reader-settings" aria-labelledby="settings-title"><header class="settings-header"><div><h2 id="settings-title">阅读设置</h2><p>找到适合自己的阅读方式</p></div><button class="icon-button" type="button" id="settings-close" aria-label="关闭阅读设置">×</button></header>
+<div class="settings-content">
+<fieldset class="setting-group"><legend>背景配色</legend><div class="theme-choices" role="group" aria-label="背景配色">
+<button class="theme-choice" type="button" data-theme-value="white" aria-pressed="true"><span class="theme-swatch swatch-white" aria-hidden="true">Aa</span><span>白色</span></button>
+<button class="theme-choice" type="button" data-theme-value="paper" aria-pressed="false"><span class="theme-swatch swatch-paper" aria-hidden="true">Aa</span><span>纸色</span></button>
+<button class="theme-choice" type="button" data-theme-value="green" aria-pressed="false"><span class="theme-swatch swatch-green" aria-hidden="true">Aa</span><span>浅绿</span></button>
+<button class="theme-choice" type="button" data-theme-value="dark" aria-pressed="false"><span class="theme-swatch swatch-dark" aria-hidden="true">Aa</span><span>深黑</span></button>
+</div></fieldset>
+<div class="setting-row"><label for="texture-select">背景质感</label><select id="texture-select"><option value="none">纯色</option><option value="grain">细纸纹</option></select></div>
+<div class="setting-slider"><div class="setting-label"><label for="font-range">字号</label><output id="font-size" for="font-range">18 px</output></div><div class="font-range-row"><button type="button" id="font-smaller" aria-label="缩小正文字号">A−</button><input id="font-range" type="range" min="16" max="36" step="1" value="18"><button type="button" id="font-larger" aria-label="放大正文字号">A＋</button></div><div class="range-ends"><span>16</span><span>36</span></div></div>
+<div class="setting-slider margin-setting"><div class="setting-label"><label for="margin-range">左右留白</label><output id="margin-value" for="margin-range">每侧 10%</output></div><div class="margin-track"><input id="margin-range" type="range" min="0" max="40" step="1" value="10" aria-describedby="margin-description margin-hint"><div class="margin-presets" role="group" aria-label="留白参考位置"><button type="button" class="margin-preset" data-margin-value="0" style="--tick:0%" aria-label="满宽：左右各留白 0%" aria-pressed="false"><span class="preset-dot" aria-hidden="true"></span><span class="preset-name">满宽</span></button><button type="button" class="margin-preset" data-margin-value="10" style="--tick:25%" aria-label="宽栏：左右各留白 10%" aria-pressed="true"><span class="preset-dot" aria-hidden="true"></span><span class="preset-name">宽栏</span></button><button type="button" class="margin-preset" data-margin-value="20" style="--tick:50%" aria-label="适中：左右各留白 20%" aria-pressed="false"><span class="preset-dot" aria-hidden="true"></span><span class="preset-name">适中</span></button><button type="button" class="margin-preset" data-margin-value="40" style="--tick:100%" aria-label="窄栏：左右各留白 40%" aria-pressed="false"><span class="preset-dot" aria-hidden="true"></span><span class="preset-name">窄栏</span></button></div></div><p class="margin-description" id="margin-description" aria-live="polite">正文占阅读区域的 80%</p><p class="margin-hint" id="margin-hint">圆点可点击，也可停在任意位置。满宽时，收起目录可用满整个窗口。</p></div>
+<div class="setting-slider"><div class="setting-label"><label for="line-range">行距</label><output id="line-value" for="line-range">1.9 倍</output></div><input id="line-range" type="range" min="1.4" max="2.4" step="0.1" value="1.9"></div>
+<div class="setting-row"><label for="indent-toggle">首行缩进</label><label class="switch"><input id="indent-toggle" type="checkbox"><span class="switch-track" aria-hidden="true"></span><span class="switch-description">两字</span></label></div>
+<div class="setting-row"><label for="font-select">正文字体</label><select id="font-select"><option value="sans">黑体 / 无衬线</option><option value="serif">宋体 / 衬线</option><option value="kai">楷体</option></select></div>
+<p class="setting-hint">使用设备已有字体；没有对应字体时自动替代。</p>
+</div><footer class="settings-footer"><button type="button" id="settings-reset">恢复默认</button><button type="button" id="print-button">打印 / 保存 PDF ↗</button></footer><p class="settings-save-note" id="settings-save-note" role="status">设置会在此浏览器中自动记住</p></dialog>
+<dialog class="zoom-dialog" id="image-dialog" aria-label="查看原图"><div class="zoom-header"><span class="zoom-description" id="zoom-description"></span><button type="button" class="zoom-close">关闭 ×</button></div><div class="zoom-scroll"><img id="zoom-image" alt=""></div></dialog>
+<noscript><p class="no-js-hint">正文、图片与目录无需脚本即可阅读；阅读设置与图片放大需要启用 JavaScript。</p></noscript>
+<script>{{JS}}</script>
+</body></html>

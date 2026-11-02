@@ -1,0 +1,2 @@
+# Preserve exact file bytes so template checksums survive cloning on any OS.
+* -text

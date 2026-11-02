@@ -1,0 +1,15 @@
+{
+  "$schema": "../document.schema.json",
+  "schema_version": 1,
+  "template_id": "knowledge-reader-v5",
+  "source": "文章.md",
+  "output": "文章.html",
+  "metadata": {
+    "title": "让知识更容易被读懂",
+    "author": "石头开会",
+    "publication_date": null
+  },
+  "reading": {
+    "margin_percent": 10
+  }
+}

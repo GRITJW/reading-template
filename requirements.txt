@@ -1,0 +1,3 @@
+# 构建时使用；阅读生成的 HTML 不需要 Python 或这些包。
+Markdown==3.8
+beautifulsoup4==4.13.5
